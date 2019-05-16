@@ -1,0 +1,44 @@
+
+body{
+	position:relative;
+	background-color: black;
+	background-size: 10000px 1500px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.container{
+	background-color:#F7F7F7;
+}
+nav#part-top{
+	background-color:#c79810;
+}
+#part-bottom{
+	background-color:#c79810;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+#imag-unam{
+	padding-top:10px;
+}
+#carrusel{
+	 height:60%;
+}
+#conten-main{
+	padding-top:60px;
+}
+#text{
+	color:black;
+}
+.texblack{
+	color:black;
+}
+#carruselc{
+	border:5px solid black;
+	padding:2%;
+	border-radius:10px;
+	box-shadow:7px 7px grey;
+	height:400px;
+}
+#carrusel,#fr,#fa{
+	height:350px;
+}
