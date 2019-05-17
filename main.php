@@ -103,7 +103,7 @@
 							<div class="col-lg-12 col-xs-12">
 								<form class="form-horizontal" method="POST" action="templates/usuario.php">
 									<div class="form-group">
-										<label for="nomu" class="col-lg-3 control-label">Correo: </label>
+										<label for="nomuy" class="col-lg-3 control-label">Correo: </label>
 										<div class="col-lg-9">
 											<input type="text" class="form-control" id="correo-usuario" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}"/>
 										</div>
@@ -140,7 +140,7 @@
 									<div class="form-group">
 										<label for="nomu" class="control-label">Correo: </label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="correo" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}" name="correo"/>
+											<input type="text" class="form-control" id="corr" placeholder="Correo" name="correo"/>
 										</div>
 									</div>
 									<div class="form-group">
@@ -173,7 +173,7 @@
 											<input type="password" class="form-control" id="sena" placeholder="Contraseña"  required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}" maxlength="17" name="sena"/>
 										</div>
 									</div>
-									<button class="btn btn-lg btn-block btn-dark" id="registrarse" type="submit">Registrarse</button>
+									<button class="btn btn-lg btn-block btn-dark" id="registrarse" name="submit" type="submit">Registrarse</button>
 								</form>
 							</div>
 						</div>

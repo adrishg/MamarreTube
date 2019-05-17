@@ -1,11 +1,9 @@
 <?php
-if (isset($_POST['submit']))
-    {
+
 	$correo=$_POST['correo'];
 	$nombre=$_POST['nombre'];
-	$paterno=$POST['paterno'];
+	$paterno=$_POST['paterno'];
 	$contra=$_POST['contra'];
-	$sena=$_POST['sena']
-
-	printf($correo);
-}
+	$sena=$_POST['sena'];
+	echo 'Hola'.$nombre.'hola';
+	?>
