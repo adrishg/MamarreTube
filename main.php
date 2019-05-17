@@ -105,13 +105,13 @@
 									<div class="form-group">
 										<label for="nomu" class="col-lg-3 control-label">Correo: </label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="correo" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}"/>
+											<input type="text" class="form-control" id="correo-usuario" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}"/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="con" class="col-lg-3 control-label">Contraseña: </label>
 										<div class="col-lg-9">
-											<input type="password" class="form-control" id="contra" placeholder="Contraseña" name="contra" required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}"/>
+											<input type="password" class="form-control" id="contrasenia" placeholder="Contraseña" name="contrasenia" required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}"/>
 										</div>
 									</div>
 									<button class="btn btn-lg btn-block btn-dark" id="entrar" type="submit">Entrar</button>
@@ -140,31 +140,31 @@
 									<div class="form-group">
 										<label for="nomu" class="control-label">Correo: </label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="correo" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}"/>
+											<input type="text" class="form-control" id="correo" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}" name="correo"/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="nom" class="control-label">Nombre:</label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="nombre" placeholder="Nombre"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ){1,3}[A-ZÑÁÉÍÓÚ][a-záéíóúñ]{2,10}$" maxlength="60" name="nombre"/>
+											<input type="text" class="form-control" id="nombre" placeholder="Nombre"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="nombre"/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="nom" class="control-label">Apellido paterno:</label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="paterno" placeholder="Apellido paterno"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ){1,3}[A-ZÑÁÉÍÓÚ][a-záéíóúñ]{2,10}$" maxlength="60" name="paterno"/>
+											<input type="text" class="form-control" id="paterno" placeholder="Apellido paterno"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="paterno"/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="nom" class="control-label">Apellido materno: </label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="materno" placeholder="Apellido materno"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ){1,3}[A-ZÑÁÉÍÓÚ][a-záéíóúñ]{2,10}$" maxlength="60" name="materno"/>
+											<input type="text" class="form-control" id="materno" placeholder="Apellido materno"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="materno"/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="con" class="control-label">Contraseña: </label>
 										<div class="col-lg-9">
-											<input type="password" class="form-control" id="contra" placeholder="Contraseña"  required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}$" maxlength="17" name="contra"/>
+											<input type="password" class="form-control" id="contra" placeholder="Contraseña"  required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}" maxlength="17" name="contra"/>
 										</div>
 									</div>
 									<div class="form-group">

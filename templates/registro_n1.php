@@ -1,12 +1,16 @@
 <?php
-if(preg_match('/^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ){1,3}[A-ZÑÁÉÍÓÚ][a-záéíóúñ]{2,10}$/',$_POST['nombre'])&&preg_match('/^[a-zA-Z0-9_\.\-\@]{8,17}$/',$_POST['contra']))
-{
+// if(preg_match('/^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ([A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,10} ){1,3}[A-ZÑÁÉÍÓÚ][a-záéíóúñ]{2,10}$/',$_POST['nombre'])&&preg_match('/^[a-zA-Z0-9_\.\-\@]{8,17}$/',$_POST['contra']))
+// {
+// if (isset($_POST['submit']))
+//     {
 	$correo=$_POST['correo'];
 	$nombre=$_POST['nombre'];
-	$paterno=$POST['paterno']
+	$paterno=$_POST['paterno'];
+	$materno=$_POST['materno'];
 	$contra=$_POST['contra'];
 	$sena=$_POST['sena'];
-}
+///}
+// }
 $ch=str_split($contra);
 	$contrasena="";
 	for($x=0;$x<5;$x++)

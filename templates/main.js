@@ -6,12 +6,14 @@
 			if (contra == sena)
 			{
 				$(this).parent().children(':nth-child(2)').remove();
-				$(this).parent().append('<div class="alert alert-success" role="alert"><strong>Bien</strong> Tus contraseñas coinciden</div>');
+				// $(this).parent().append('<div class="alert alert-success" role="alert"><strong>Bien</strong> Tus contraseñas coinciden</div>');
 			}
 			else
 			{
 				$(this).parent().children(':nth-child(2)').remove();
-				$(this).parent().append('<div class="alert alert-danger" role="alert"><strong>Error</strong> Tus contraseñas no coinciden</div>');
+				$(this).parent().append('<p>WEYYYYY</p>'+contra);
+				$(this).parent().append('<p>WEYYYYY</p>'+sena);
+				// $(this).parent().append('<div class="alert alert-danger"'+contra+sena+' role="alert"><strong>Error</strong> Tus contraseñas no coinciden</div>');
 			}				
 		});
 	});
