@@ -7,27 +7,31 @@
 		
 		<title>CinemaTube</title>
 		
-		<link href="css/bootstrap.min.css" rel="stylesheet"/>
-		<link rel="shortcut icon" href="img/clapperboard.png" type="image/png"/>
-		<link href="css/stylemain.css"  rel="stylesheet" type="text/css">
+		<link href="../css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="shortcut icon" href="../img/clapperboard.png" type="image/png"/>
+		<!-- <link href="../css/stylemain.css"  rel="stylesheet" type="text/css"> -->
 	</head>
 	<body data-spy="scroll" data-target="#navegacion">
-			<?php
-			SESSION_START();
-			if(isset($_POST['correo']) && isset($_POST['contra']))
-			{
-				$enlace = mysqli_connect("localhost","root","","cinematube");
-				htmlspecialchars($_POST['correo']);
-				htmlspecialchars($_POST['contra']);
-				mysqli_real_escape_string($enlace,$_POST['correo']);
-				mysqli_real_escape_string($enlace,$_POST['contra']);
+		<?php
+		SESSION_START();
+		
+		// $correo=$_POST['correo-usuario'];
+		// $contra=$_POST['contrasenia'];
+
+		if(isset($_POST['correo-usuario']) && isset($_POST['contrasenia']))
+		{
+			$enlace = mysqli_connect("localhost","root","","cinematube");
+				htmlspecialchars($_POST['correo-usuario']);
+				htmlspecialchars($_POST['contrasenia']);
+				mysqli_real_escape_string($enlace,$_POST['correo-usuario']);
+				mysqli_real_escape_string($enlace,$_POST['contrasenia']);
 			if(!$enlace)
 			{
 				echo "No se pudo conectar".mysqli_connect_error();
 			}
 			else
 			{	//proceso de codificación de la contraseña
-				$contra = $_POST['contra'];
+				$contra = $_POST['contrasenia'];
 				$ch = str_split($contra);
 				$contrasena = "";
 				$carac=0;
@@ -77,12 +81,14 @@
 				$h = 'Texto: '.$contra.'<br/>playfair("'.$grr.'",5)';
 				$cant = ceil(strlen($grr)/2);
 				$contrasena=$contrasena.substr($grr,0,$cant);
+
 				
 				$tildes = $enlace -> query("SET NAMES 'utf8'");
 						
-				$confi='SELECT USUARIO_CONTRASENIA FROM USUARIOS WHERE USUARIO_NOMBRE="'.$_POST['nom-usuario'].'"';
-				
+				$confi='SELECT USUARIO_CONTRASENIA FROM usuarios WHERE USUARIO_CORREO="'.$_POST['correo-usuario'].'"';
+				echo "'$confi'";
 				$res = mysqli_query($enlace, $confi);
+				//echo "'$res'";
 				$arre = array();
 				if(!empty($res))
 				{
@@ -102,8 +108,8 @@
 					if($contrasena == $arre)
 					{
 						echo "Todo bien";
-						$corr = $_POST['correo'];
-						echo $corr;
+						$correo = $_POST['correo-usuario'];
+						echo $correo;
 						$consulta =  'SELECT * FROM usuarios WHERE USUARIO_CORREO="'.$correo.'"';
 						$res = mysqli_query($enlace, $consulta);
 						//$ra = mysqli_fetch_array($enlace,);
@@ -128,27 +134,21 @@
 				$_SESSION['materno'] = $arr[4];
 				$_SESSION['fecha'] = $arr[5];
 			}
-			}
 			if(isset($_SESSION['tipo']) && isset($_SESSION['correo']) && isset($_SESSION['nombre']))
 			{
 				$enlace=mysqli_connect("localhost","root","","cinematube");
 				if(!$enlace)
-					echo 'hubo un error';
-				else
-				{
-					$fecha=date('Y/m/d');
-					$nuevafecha='UPDATE usuarios SET FECHA_CONECT="'.$fecha.'" WHERE USUARIO_NOMBRE="'.$_SESSION['usuario'].'"';
-					mysqli_query($enlace,$nuevafecha);
-				}
-				mysqli_close($enlace);
+					echo 'Hubo un error';
+			}
+				// mysqli_close($enlace);
 				echo '<div class="container">
-			<header>
-				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				  <a class="navbar-brand" href="#">CinemaTube</a>
-				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				    <span class="navbar-toggler-icon"></span>
-				  </button>
-				  <div class="collapse navbar-collapse" id="navbarSupportedContent">';
+						<header>
+							<nav class="navbar navbar-expand-lg navbar-light bg-light">
+							  <a class="navbar-brand" href="#">CinemaTube</a>
+							  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							    <span class="navbar-toggler-icon"></span>
+							  </button>
+					  <div class="collapse navbar-collapse" id="navbarSupportedContent">';
 						// Aquí usaremos los ifs de php para desplehar navbar con contenido distinto según el tipo de usuario
 						if($_SESSION['tipo']=='1') 
 						{
@@ -190,7 +190,6 @@
 								      </li>-->
 								    </ul>';
 							}
-							}
 						}
 									echo ' <span class="btn-group">
 										<button type="button" class="btn btn-primary navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span>
@@ -212,49 +211,146 @@
 				
 						<div class="row">
 							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" id="izquierda" height="300px">';
-								// Notificación de partidas empezadas
-								
-								$connect = mysqli_connect("localhost","root","","prueba");
-								$name = $_SESSION['usuario'];
-								$buscar = "select * partidas where jugador_2 = $name";
-								$search = mysqli_query($connect,$buscar);
-								if($search != false)
-								{
-									$cadena = mysqli_fetch_array($search);
-									print_r($cadena);
-								}
-								else
-								{
-									echo "Sin notificaciones por el momento";
-								}
-								mysqli_close($connect);
-									
-							echo '</div>';
-							
-				}
-				else
-				{
-					echo '<div class="row">
-								<div class="jumbotron col-lg-7 col-lg-offset-1">
-									<h1>Inicie sesión correctamente.</h1>
-								</div>
-						</div>';
-				}
+			}			
 			?>
-		</div>
-		<div class="row">
-			<div class="col-lg-12 navbar-fixed-bottom">
-				<footer class="text-center" id="part-bottom">
-					Hecho en México. Todos los derechos reservados.
-				</footer>
+
+		<!-- FOOTER -->
+		<footer class="page-footer font-small black">
+
+		  <!-- Copyright -->
+		  <div class="footer-copyright text-center py-3">© 2019 Proteco:
+					<a style="color:black; text-decoration:underline;" data-toggle="modal" data-target="#creditos">Créditos<a>			
+		  </div>
+		  <!-- Copyright -->
+
+		</footer>
+	<!-- /FOOTER -->
+
+
+	<!-- Modal de inicar sesión -->
+		<div class="modal fade" id="iniciar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="myModalLabel">Iniciar Sesión</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-lg-12 col-xs-12">
+								<form class="form-horizontal" method="POST" action="templates/usuario.php">
+									<div class="form-group">
+										<label for="nomuy" class="col-lg-3 control-label">Correo: </label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="correo-usuario" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="con" class="col-lg-3 control-label">Contraseña: </label>
+										<div class="col-lg-9">
+											<input type="password" class="form-control" id="contrasenia" placeholder="Contraseña" name="contrasenia" required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}"/>
+										</div>
+									</div>
+									<button class="btn btn-lg btn-block btn-dark" id="entrar" type="submit">Entrar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
 			</div>
 		</div>
-		
-		
-		
-		
-		<script src="../Documents/jquery.js"></script>
-		<script src="../Documents/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="main.js"></script>
+		<!-- Modal para registro-->
+		<div class="modal fade" id="registrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="myModalLabel">Registrarse</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-lg-12 col-xs-12">
+								<form class="form-horizontal" method="POST" action="templates/registro_n1.php" >
+									<div class="form-group">
+										<label for="nomu" class="control-label">Correo: </label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="corr" placeholder="Correo" name="correo"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="nom" class="control-label">Nombre:</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="nombre" placeholder="Nombre"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="nombre"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="nom" class="control-label">Apellido paterno:</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="paterno" placeholder="Apellido paterno"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="paterno"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="nom" class="control-label">Apellido materno: </label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="materno" placeholder="Apellido materno"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="materno"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="con" class="control-label">Contraseña: </label>
+										<div class="col-lg-9">
+											<input type="password" class="form-control" id="contra" placeholder="Contraseña"  required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}" maxlength="17" name="contra"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="cond" class="control-label">Repetir contraseña: </label>
+										<div class="col-lg-9">
+											<input type="password" class="form-control" id="sena" placeholder="Contraseña"  required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}" maxlength="17" name="sena"/>
+										</div>
+									</div>
+									<button class="btn btn-lg btn-block btn-dark" id="registrarse" name="submit" type="submit">Registrarse</button>
+								</form>
+							</div>
+						</div>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal para los créditos completos -->
+		<div class="modal fade" id="creditos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header text-center">
+						<h3 class="modal-title" id="myModalLabel">Equipo de Desarrollo: </h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-lg-12 col-xs-12">
+								<div class="text-center">
+									<br/>
+									<p> Rolando Miguel Alvarez</p>
+									<p>Samuel Arturo Garrido Sanchéz </p> 
+									<p> Adriana Hernández González</p> 
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../js/jquery-3.3.1.min.js"></script>
+		<script src="../js/bootstrap.bundle.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../templates/main.js"></script>
 	</body>
 </html>

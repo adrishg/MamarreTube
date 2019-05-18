@@ -67,15 +67,20 @@ if($contra==$sena)
 {
 	$fecha=date('Y/m/d');
 	$link=mysqli_connect("localhost","root","","cinematube");
+if(!$link){
+	echo 'RIP aiuda';
+}
+
 	$tildes = $link->query("SET NAMES 'utf8'");
-	$SQL='INSERT INTO usuarios (USUARIO_TYPE,USUARIO_CORREO,USUARIO_NOMBRE,USUARIO_PATERNO,USUARIO_MATERNO,FECHA_REGISTRO) values (1,"'.$correo.'",'.$nombre.','.$paterno.','.$materno.',"'.$contrasena.'","'.$fecha.'")';
+	$SQL='INSERT INTO usuarios (USUARIO_TYPE,USUARIO_CORREO,USUARIO_NOMBRE,USUARIO_PATERNO,USUARIO_MATERNO,USUARIO_CONTRASENIA,FECHA_REGISTRO) values (1,"'.$correo.'","'.$nombre.'","'.$paterno.'","'.$materno.'","'.$contrasena.'","'.$fecha.'");';
 	mysqli_query($link,$SQL);
 	mysqli_close($link);
-	header('location:main.php');
+	echo ''.$SQL.'';
+	//header('location:../main.php');
 	
 }
 else
 {
-	header('location:main.php');
+	header('location:../main.php');
 }
 ?>
