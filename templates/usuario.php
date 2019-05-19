@@ -86,7 +86,6 @@
 				$tildes = $enlace -> query("SET NAMES 'utf8'");
 						
 				$confi='SELECT USUARIO_CONTRASENIA FROM usuarios WHERE USUARIO_CORREO="'.$_POST['correo-usuario'].'"';
-				echo "'$confi'";
 				$res = mysqli_query($enlace, $confi);
 				//echo "'$res'";
 				$arre = array();
@@ -107,9 +106,7 @@
 					
 					if($contrasena == $arre)
 					{
-						echo "Todo bien";
 						$correo = $_POST['correo-usuario'];
-						echo $correo;
 						$consulta =  'SELECT * FROM usuarios WHERE USUARIO_CORREO="'.$correo.'"';
 						$res = mysqli_query($enlace, $consulta);
 						//$ra = mysqli_fetch_array($enlace,);
@@ -168,9 +165,7 @@
 							          <a class="dropdown-item" href="#"> Salir </a>
 							        </div>
 							      </li>
-							      <li class="nav-item">
-							        <a class="nav-link disabled" href="#">Disabled</a>
-							      </li> 
+							      
 							    </ul>';
 						}
 						else
@@ -189,13 +184,14 @@
 								        <a class="nav-link" href="#"> Salir </a>
 								      </li>-->
 								    </ul>';
+								    echo '<button type="button" class="btn btn-dark navbar-btn" data-toggle="modal" data-target="#registrar_admins"> Registrarse administadores </button>';
+								    echo '<button type="button" class="btn btn-dark navbar-btn" data-toggle="modal" data-target="#agregar_peli"> Agregar película </button>';
 							}
 						}
 									echo ' <span class="btn-group">
-										<button type="button" class="btn btn-primary navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span>
+										<button type="button" class="btn btn-dark navbar-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu">
-											<li><a href="./camb_dis.php">Diseño de página</a></li>
 											<li><a href="./camb_imag.php">Información personal</a></li>
 											<li role="separator" class="divider"></li>
 											<li><a href="./main.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Cerrar Sesión</a></li>
@@ -227,53 +223,18 @@
 	<!-- /FOOTER -->
 
 
-	<!-- Modal de inicar sesión -->
-		<div class="modal fade" id="iniciar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<!-- Modal para registro de administradores-->
+		<div class="modal fade" id="registrar_admins" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h3 class="modal-title" id="myModalLabel">Iniciar Sesión</h3>
+						<h3 class="modal-title" id="myModalLabel">Registro de administrador</h3>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-lg-12 col-xs-12">
-								<form class="form-horizontal" method="POST" action="templates/usuario.php">
-									<div class="form-group">
-										<label for="nomuy" class="col-lg-3 control-label">Correo: </label>
-										<div class="col-lg-9">
-											<input type="text" class="form-control" id="correo-usuario" placeholder="Correo" name="correo-usuario" required pattern="^[a-zA-Z0-9_\.\-\@]{8,30}"/>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="con" class="col-lg-3 control-label">Contraseña: </label>
-										<div class="col-lg-9">
-											<input type="password" class="form-control" id="contrasenia" placeholder="Contraseña" name="contrasenia" required pattern="^[a-zA-Z0-9_\.\-\@]{8,17}"/>
-										</div>
-									</div>
-									<button class="btn btn-lg btn-block btn-dark" id="entrar" type="submit">Entrar</button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Modal para registro-->
-		<div class="modal fade" id="registrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 class="modal-title" id="myModalLabel">Registrarse</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<div class="col-lg-12 col-xs-12">
-								<form class="form-horizontal" method="POST" action="templates/registro_n1.php" >
+								<form class="form-horizontal" method="POST" action="templates/registro_admins.php" >
 									<div class="form-group">
 										<label for="nomu" class="control-label">Correo: </label>
 										<div class="col-lg-9">
@@ -348,6 +309,62 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Modal registro peliculas -->
+		<div class="modal fade" id="registrar_admins" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="myModalLabel">Agregar peliculas</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-lg-12 col-xs-12">
+								<form class="form-horizontal" method="POST" action="templates/registro_admins.php" >
+									<div class="form-group">
+										<label for="nom" class="control-label">Nombre:</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="nombre" placeholder="Nombre de la película"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="nombre_peli"/>
+										</div>
+									</div>
+									<!-- Pide imagen -->
+									<div class="container">
+									<div class="col-md-6">
+									    <div class="form-group">
+									        <label>Upload Image</label>
+									        <div class="input-group">
+									            <span class="input-group-btn">
+									                <span class="btn btn-default btn-file">
+									                    Browse… <input type="file" name="portada_peli" id="imgInp">
+									                </span>
+									            </span>
+									            <input type="text" class="form-control" readonly>
+									        </div>
+									        <img id='img-upload'/>
+									    </div>
+									</div>
+									</div>
+									<!-- Fin pide imagen -->
+									<!-- Pide el año -->
+									<input class="date-own form-control" name="anio_pelicula" style="width: 300px;" type="text">
+									<!-- Fin poide el año -->
+									<div class="form-group">
+										<label for="nom" class="control-label">Nombre director:</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="paterno" placeholder="Nombre del director"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,25}" maxlength="25" name="director_peli"/>
+										</div>
+									</div>
+									<div class="form-group">
+									    <label for="exampleFormControlTextarea1">Descripción pelicula</label>
+									    <textarea class="form-control" name="descripcion_peli" id="descripcion_peli" rows="3"></textarea>
+									  </div>
+									<button class="btn btn-lg btn-block btn-dark" id="registrar_lapeli" name="submit" type="submit">Agregar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
 		<script src="../js/jquery-3.3.1.min.js"></script>
 		<script src="../js/bootstrap.bundle.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
