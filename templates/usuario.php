@@ -27,7 +27,9 @@
 				htmlspecialchars($_POST['contrasenia']);
 				mysqli_real_escape_string($enlace,$_POST['correo-usuario']);
 				mysqli_real_escape_string($enlace,$_POST['contrasenia']);
+                
 			if(!$enlace)
+
 			{
 				echo "No se pudo conectar".mysqli_connect_error();
 			}
@@ -132,6 +134,7 @@
 				$_SESSION['paterno'] = $arr[3];;
 				$_SESSION['materno'] = $arr[4];
 				$_SESSION['fecha'] = $arr[5];
+
 
 			}
 			if(isset($_SESSION['tipo']) && isset($_SESSION['correo']) && isset($_SESSION['nombre']))
@@ -286,6 +289,8 @@
 				</div>
 			</div>
 		</div>
+
+
 		<!-- Modal para los créditos completos -->
 		<div class="modal fade" id="creditos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -312,7 +317,35 @@
 				</div>
 			</div>
 		</div>
+<div id="pelicula">
+	<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/1.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div></div>
 
+<div>
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/2.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/3.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/4.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/5.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/6.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/7.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+
+
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/8.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+
+<div class="col s3"><div class="card" style="width: 18rem;"><img class="card-img-top" src="../img/9.jpg" alt="Card image cap"><div class="card-body"><h5 class="card-title">Divisiones</h5><p class="card-text">Las ramas por la cuál se encuentra divididad la facultad</p><a href="#" class="btn btn-danger" id="Boton2">Ver más</a></div></div></div>
+
+
+
+</div>
+
+</div>
 		<!-- Modal registro peliculas -->
 		<div class="modal fade" id="agregar_peli" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -367,10 +400,10 @@
 							</div>
 						</div>
 					</div>
-
+        <script src="../js/pelicula.js"></script>
 		<script src="../js/jquery-3.3.1.min.js"></script>
 		<script src="../js/bootstrap.bundle.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../templates/main.js"></script>
+		<script type="text/javascript" src="../templates/main.js"></fscript>
 	</body>
 </html>
