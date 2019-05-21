@@ -7,6 +7,8 @@
 		
 		<title>CinemaTube</title>
 		
+
+
 		<link href="../css/bootstrap.min.css" rel="stylesheet"/>
 		<link rel="shortcut icon" href="../img/clapperboard.png" type="image/png"/>
 		<!-- <link href="../css/stylemain.css"  rel="stylesheet" type="text/css"> -->
@@ -130,6 +132,7 @@
 				$_SESSION['paterno'] = $arr[3];;
 				$_SESSION['materno'] = $arr[4];
 				$_SESSION['fecha'] = $arr[5];
+
 			}
 			if(isset($_SESSION['tipo']) && isset($_SESSION['correo']) && isset($_SESSION['nombre']))
 			{
@@ -234,7 +237,7 @@
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-lg-12 col-xs-12">
-								<form class="form-horizontal" method="POST" action="templates/registro_admins.php" >
+								<form class="form-horizontal" method="POST" action="registro_admins.php" >
 									<div class="form-group">
 										<label for="nomu" class="control-label">Correo: </label>
 										<div class="col-lg-9">
@@ -311,7 +314,7 @@
 		</div>
 
 		<!-- Modal registro peliculas -->
-		<div class="modal fade" id="registrar_admins" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="agregar_peli" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -321,34 +324,34 @@
 					<div class="modal-body">
 						<div class="row">
 							<div class="col-lg-12 col-xs-12">
-								<form class="form-horizontal" method="POST" action="templates/registro_admins.php" >
+								<form class="form-horizontal" method="POST" action="registro_pelicula.php" >
 									<div class="form-group">
 										<label for="nom" class="control-label">Nombre:</label>
 										<div class="col-lg-9">
-											<input type="text" class="form-control" id="nombre" placeholder="Nombre de la película"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,15}" maxlength="15" name="nombre_peli"/>
+											<input type="text" class="form-control" id="nombre" placeholder="Nombre de la película"  required pattern="^[A-ZÑÁÉÍÓÚ][a-zñáéíóú]{1,20}" name="nombre_peli"/>
 										</div>
 									</div>
 									<!-- Pide imagen -->
 									<div class="container">
 									<div class="col-md-6">
 									    <div class="form-group">
-									        <label>Upload Image</label>
+									        <label>Portada película: </label>
 									        <div class="input-group">
-									            <span class="input-group-btn">
 									                <span class="btn btn-default btn-file">
-									                    Browse… <input type="file" name="portada_peli" id="imgInp">
+									                   <input type="file" name="portada_peli" id="imgInp">
 									                </span>
-									            </span>
-									            <input type="text" class="form-control" readonly>
 									        </div>
 									        <img id='img-upload'/>
 									    </div>
 									</div>
 									</div>
 									<!-- Fin pide imagen -->
-									<!-- Pide el año -->
-									<input class="date-own form-control" name="anio_pelicula" style="width: 300px;" type="text">
-									<!-- Fin poide el año -->
+									<div class="form-group">
+										<label for="nom" class="control-label">Año de la pelicula: :</label>
+										<div class="col-lg-9">
+											<input type="text" class="form-control" id="anio_peli" placeholder="Año"  maxlength="25" name="anio_peli"/>
+										</div>
+									</div>
 									<div class="form-group">
 										<label for="nom" class="control-label">Nombre director:</label>
 										<div class="col-lg-9">

@@ -76,7 +76,7 @@ if(!$link){
 	mysqli_query($link,$SQL);
 	mysqli_close($link);
 	echo ''.$SQL.'';
-	//header('location:../main.php');
+	header('location:../main.php');
 	
 }
 else

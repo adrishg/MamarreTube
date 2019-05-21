@@ -4,7 +4,7 @@
 	$portada_peli=$_POST['portada_peli'];
 	$anio_peli=$_POST['anio_peli'];
 	$director_peli=$_POST['director_peli'];
-	$descripcion_peli=$_POST['sena'];
+	$descripcion_peli=$_POST['descripcion_peli'];
 
 
 	$link=mysqli_connect("localhost","root","","cinematube");
